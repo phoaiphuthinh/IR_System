@@ -1,0 +1,23 @@
+	vector<string> til;
+	ifstream fin;
+	vector<string> files = vector<string>();
+	getdir(files);
+	for (int i = 2; i < (int)files.size(); i++) {
+		string name = fileNametoPath(files[i]);
+		cout << name;
+		fin.open(name);
+		if (fin.is_open()) {
+			string title;
+			getline(fin, title);
+			til.push_back(title);
+		}
+		fin.close();
+	}
+	ofstream fout;
+	fout.open("data//history.txt");
+	for (int i = 0; i < til.size(); i++)
+	{
+		fout << til[i] << endl;
+	}
+	fout.close();
+	system("pause");
